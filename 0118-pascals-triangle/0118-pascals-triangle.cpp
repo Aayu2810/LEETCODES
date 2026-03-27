@@ -1,15 +1,17 @@
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-     vector<vector<int>> ans;
-
-    for (int i = 0; i < numRows; ++i)
-      ans.push_back(vector<int>(i + 1, 1));
-
-    for (int i = 2; i < numRows; ++i)
-      for (int j = 1; j < ans[i].size() - 1; ++j)
-        ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j];
-
-    return ans;       
+        vector<vector<int>> f;
+        f.push_back(vector<int>(1, 1));
+        for (int i = 0; i < numRows - 1; ++i) {
+            vector<int> g;
+            g.push_back(1);
+            for (int j = 1; j < f[i].size(); ++j) {
+                g.push_back(f[i][j - 1] + f[i][j]);
+            }
+            g.push_back(1);
+            f.push_back(g);
+        }
+        return f;
     }
 };
