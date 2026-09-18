@@ -5,9 +5,7 @@ class Seg:
 
     def __lt__(self, rhs):
         return (
-            self.left > rhs.left
-            if self.right == rhs.right
-            else self.right < rhs.right
+            self.left > rhs.left if self.right == rhs.right else self.right < rhs.right
         )
 
 
